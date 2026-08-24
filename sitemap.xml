@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Submit this in Search Console under Sitemaps, as: sitemap.xml
+
+  There is deliberately no robots.txt beside it. robots.txt is only read at the origin
+  root, https://apoorvverma5.github.io/robots.txt, which this repository does not
+  control: it is a GitHub Pages project site served from /pixcrate/. A robots.txt placed
+  here would be ignored, so the sitemap is submitted directly instead.
+
+  success.html is deliberately absent. It carries noindex, it is only ever reached by a
+  redirect from checkout, and its URL can contain a licence key.
+
+  Only lastmod is given. Google states that it ignores changefreq and priority, and that
+  it trusts lastmod only where it is consistently accurate, so the dates below are the
+  real last-commit dates of each file and should be updated when a page changes.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://apoorvverma5.github.io/pixcrate/</loc>
+    <lastmod>2026-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://apoorvverma5.github.io/pixcrate/privacy.html</loc>
+    <lastmod>2026-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://apoorvverma5.github.io/pixcrate/terms.html</loc>
+    <lastmod>2026-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://apoorvverma5.github.io/pixcrate/refund.html</loc>
+    <lastmod>2026-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://apoorvverma5.github.io/pixcrate/contact.html</loc>
+    <lastmod>2026-08-24</lastmod>
+  </url>
+</urlset>
