@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to download all the images on a web page | Pixcrate</title>
+<meta name="description" content="Four ways to save every image on a page, what each one actually gets you, and the five cases that quietly defeat naive tools.">
+<link rel="canonical" href="https://apoorvverma5.github.io/pixcrate/download-all-images.html">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Pixcrate">
+<meta property="og:title" content="How to download all the images on a web page">
+<meta property="og:description" content="Four ways to save every image on a page, what each one actually gets you, and the five cases that quietly defeat naive tools.">
+<meta property="og:url" content="https://apoorvverma5.github.io/pixcrate/download-all-images.html">
+<meta property="og:image" content="https://apoorvverma5.github.io/pixcrate/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Pixcrate mark: a picture tile with a download badge.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="./">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+        <rect class="mark__tile" x="1.6" y="1.6" width="16.8" height="16.8" rx="4.4"/>
+        <circle class="mark__on" cx="6.3" cy="6.4" r="1.7"/>
+        <path class="mark__on" d="M2.9 17V13.4L7.2 8.9l3.6 3.8 2.2-2 4.1 4.3V17Z"/>
+        <circle class="mark__moat" cx="17.7" cy="17.7" r="6.05"/>
+        <circle class="mark__tile" cx="17.7" cy="17.7" r="5.5"/>
+        <rect class="mark__on" x="16.65" y="13.9" width="2.1" height="3.5" rx="0.6"/>
+        <path class="mark__on" d="M14.9 17h5.6L17.7 20.4Z"/>
+      </svg>Pixcrate</a>
+    <nav class="nav">
+      <a href="./">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="refund.html">Refunds</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="pagehead">
+  <div class="bar">
+    <h1>How to download all the images on a web page</h1>
+    <p class="updated">Last updated: 24 August 2026</p>
+  </div>
+</section>
+
+<main class="wrap">
+
+<p class="lede">There are four ways to do it, and for a handful of pictures the
+simplest one is still the best. This is what each method actually gets you, and where
+each one quietly fails.</p>
+
+<h2>One at a time, with right-click</h2>
+<p>Right-click the picture, choose <strong>Save image as</strong>, pick a folder. Nothing
+to install and nothing to trust.</p>
+<p>For five images this is the right answer and you should stop reading. It stops being
+the right answer at about twenty, and it cannot reach several kinds of image at all: a
+picture set as a CSS background has no image element under your cursor, so the menu item
+you need is not in the menu. There is a
+<a href="download-css-background-images.html">separate guide</a> for that case.</p>
+
+<h2>Save the whole page</h2>
+<p>Press Ctrl+S, or Cmd+S on a Mac, and choose <strong>Web page, complete</strong>. The
+browser writes an HTML file and a folder beside it holding the assets it downloaded.</p>
+<p>The folder is a genuine copy of what the browser had, which is the appeal. The
+drawbacks are real too. You get every asset, not just photographs, so icons, spacers,
+tracking pixels and sprite sheets land in the same folder as the pictures you wanted. The
+filenames are whatever the site used, which is often a hash. And anything the page had not
+loaded yet, because you never scrolled to it, is not there.</p>
+
+<h2>The Network panel in developer tools</h2>
+<p>Press F12, open <strong>Network</strong>, set the filter to <strong>Img</strong>, then
+reload the page. Every image request the page makes is listed. You can right-click a row
+and open the image in a new tab, or copy its address.</p>
+<p>This is the most honest view available: it shows what the browser really fetched,
+including images that arrived later from the page's own scripts. It is also completely
+manual. There is no select-all, no filter by size, and no way to save thirty of them
+without thirty round trips. It is a diagnostic tool that happens to be usable for this,
+rather than a tool for the job.</p>
+
+<h2>An extension</h2>
+<p>An extension can read the page the way the browser sees it, list what it found, and let
+you filter and save a selection in one action. That is the only method that scales past a
+few dozen pictures.</p>
+<p>It is also the method that asks you to trust software with access to the page, so it is
+worth knowing what a given extension asks for and why. That question has
+<a href="image-downloader-permissions.html">its own guide</a>, because the honest answer is
+more interesting than it sounds.</p>
+
+<h2>The cases that break naive tools</h2>
+<p>If a downloader gives you fewer pictures than you can see, one of these is usually why.</p>
+<ul>
+<li><strong>CSS backgrounds.</strong> Hero images, banners and decorative panels are often
+set in a stylesheet rather than written as an image element, so a tool that only looks for
+image tags never sees them.</li>
+<li><strong>Lazy loading.</strong> Images below the fold are not fetched until you scroll
+near them. Anything you have not scrolled past may not exist in the page yet.</li>
+<li><strong>Responsive sources.</strong> One image tag can offer several files at
+different widths. The browser picks one. The others are still listed in the page and are
+often the larger ones.</li>
+<li><strong>Web components.</strong> Modern sites build parts of the page inside shadow
+roots, which ordinary page queries do not reach. On component-heavy sites this is the
+difference between finding almost everything and finding almost nothing.</li>
+<li><strong>Canvas and inline data.</strong> A picture drawn onto a canvas, or built by the
+page in memory, has no address on any server. Some of these can still be saved, some
+genuinely cannot.</li>
+</ul>
+
+<h2>Before you download anything</h2>
+<p>Finding an image and being allowed to use it are different questions. Most photographs
+on the web are somebody's copyright, and saving a copy does not give you a licence to
+republish it. Check the terms of the site you are on, and check the licence on the image
+itself, before you use what you collect.</p>
+
+<h2>Where Pixcrate fits</h2>
+<p><a href="./">Pixcrate</a> is built for the fourth method and for the awkward cases in the
+list above: it reads CSS backgrounds, looks inside web components, and includes images the
+page fetched with its own scripts. It filters by size, shape, file type, file size and the
+site serving each picture, renames in batches, and saves either one by one or as a single
+ZIP.</p>
+<p>It is free for 25 downloads a day, with searching, filtering, previewing and renaming
+unlimited. It says "found on this page" rather than "all images", because on a page that
+hides content inside closed components no tool can promise everything, and one that
+promises it anyway is lying to you.</p>
+
+
+<h2>More guides</h2>
+<ul>
+<li><a href="download-all-images.html">How to download all the images on a web page</a></li>
+<li><a href="download-css-background-images.html">How to save a CSS background image</a></li>
+<li><a href="image-downloader-permissions.html">Why image downloaders ask to read your data on all websites</a></li>
+</ul>
+
+</main>
+
+<footer class="sitefoot">
+  <div class="bar">
+    <nav class="footlinks">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="refund.html">Refund Policy</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <p class="seller">Sold by Apoorv Verma, Jaipur, Rajasthan, India. Email: <a href="mailto:ryan.apoorv123@gmail.com">ryan.apoorv123@gmail.com</a>. Payments are processed by Dodo Payments, our authorised reseller and Merchant of Record.</p>
+    <p class="copy">&copy; 2026 Apoorv Verma. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

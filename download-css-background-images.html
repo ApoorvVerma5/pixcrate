@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to save a CSS background image | Pixcrate</title>
+<meta name="description" content="Right-click offers no Save image as on a CSS background. Here is why, and three ways to get the file anyway.">
+<link rel="canonical" href="https://apoorvverma5.github.io/pixcrate/download-css-background-images.html">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Pixcrate">
+<meta property="og:title" content="How to save a CSS background image">
+<meta property="og:description" content="Right-click offers no Save image as on a CSS background. Here is why, and three ways to get the file anyway.">
+<meta property="og:url" content="https://apoorvverma5.github.io/pixcrate/download-css-background-images.html">
+<meta property="og:image" content="https://apoorvverma5.github.io/pixcrate/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Pixcrate mark: a picture tile with a download badge.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="bar">
+    <a class="brand" href="./">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+        <rect class="mark__tile" x="1.6" y="1.6" width="16.8" height="16.8" rx="4.4"/>
+        <circle class="mark__on" cx="6.3" cy="6.4" r="1.7"/>
+        <path class="mark__on" d="M2.9 17V13.4L7.2 8.9l3.6 3.8 2.2-2 4.1 4.3V17Z"/>
+        <circle class="mark__moat" cx="17.7" cy="17.7" r="6.05"/>
+        <circle class="mark__tile" cx="17.7" cy="17.7" r="5.5"/>
+        <rect class="mark__on" x="16.65" y="13.9" width="2.1" height="3.5" rx="0.6"/>
+        <path class="mark__on" d="M14.9 17h5.6L17.7 20.4Z"/>
+      </svg>Pixcrate</a>
+    <nav class="nav">
+      <a href="./">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="refund.html">Refunds</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="pagehead">
+  <div class="bar">
+    <h1>How to save a CSS background image</h1>
+    <p class="updated">Last updated: 24 August 2026</p>
+  </div>
+</section>
+
+<main class="wrap">
+
+<p class="lede">Right-click does not offer <strong>Save image as</strong> on a CSS
+background, and that is not a bug. There is no image there to save, in the sense the menu
+means. Here is why, and three ways to get the file anyway.</p>
+
+<h2>Why right-click has nothing to offer</h2>
+<p>A picture can reach a page two ways. It can be written into the HTML as an image
+element, which is a real object in the page that you can point at. Or it can be named in a
+stylesheet, as the background of some other element, usually a plain container.</p>
+<p>In the second case the thing under your cursor is that container. The browser has
+painted a picture onto it, but the picture is a style, not an element, so the context menu
+offers you the options that make sense for a box and not the ones that make sense for a
+photograph. Hero banners, section headers, decorative panels and most sprite sheets are
+built this way.</p>
+
+<h2>Method one: read it out of the styles</h2>
+<ol>
+<li>Right-click the picture and choose <strong>Inspect</strong>.</li>
+<li>In the <strong>Elements</strong> panel, look at the highlighted element. You may need
+to move up a level or two to the container that actually carries the background.</li>
+<li>In the <strong>Styles</strong> or <strong>Computed</strong> pane, find
+<code>background-image</code>. Its value looks like
+<code>url("https://example.com/hero.jpg")</code>.</li>
+<li>Open that address in a new tab, then save it normally.</li>
+</ol>
+<p>This is exact and it always works, because you are reading the value the browser
+itself resolved. It is also four steps per picture.</p>
+
+<h2>Method two: catch it in the Network panel</h2>
+<ol>
+<li>Press F12 and open <strong>Network</strong>.</li>
+<li>Set the filter to <strong>Img</strong>.</li>
+<li>Reload the page, and scroll down it so lazy-loaded sections actually load.</li>
+<li>Find the file in the list, right-click the row, and open it in a new tab.</li>
+</ol>
+<p>The advantage over the first method is that you see every image the page fetched
+without hunting for the element that owns each one. The disadvantage is that you also see
+every icon, tracking pixel and sprite, and nothing tells you which row is the banner you
+were looking at.</p>
+
+<h2>Method three: an extension that reads computed styles</h2>
+<p>An extension can walk the page, ask the browser for the computed
+<code>background-image</code> of each element, and list what it finds beside the ordinary
+images. That turns the four-step manual process into a checkbox.</p>
+<p>Worth knowing: a background can be a stack of layers, such as a dark gradient painted
+over a photograph to make white text readable. Only some of those layers are files. A tool
+that handles this properly will pull out the file and ignore the gradient.</p>
+
+<h2>The one case that has no answer</h2>
+<p>If the background is not a file at all, there is nothing to download. A pure CSS
+gradient is drawn by the browser from a formula, and a picture assembled on a canvas
+exists only in memory. You can screenshot what you see, but that gives you a copy at the
+size it was displayed rather than the original file, which is usually not what you
+wanted.</p>
+
+<h2>Copyright still applies</h2>
+<p>A background image is as protected as any other photograph. Being able to reach the file
+is not permission to reuse it. Check the site's terms and the image's licence.</p>
+
+<h2>Where Pixcrate fits</h2>
+<p><a href="./">Pixcrate</a> reads computed background images across the page, including
+pseudo-elements and layered backgrounds, and lists them next to the ordinary images so you
+can filter and save them together. It also reaches the two other places a manual scan
+tends to miss: images inside web components, and images the page fetched with its own
+scripts.</p>
+<p>See also: <a href="download-all-images.html">how to download all the images on a
+page</a>.</p>
+
+
+<h2>More guides</h2>
+<ul>
+<li><a href="download-all-images.html">How to download all the images on a web page</a></li>
+<li><a href="download-css-background-images.html">How to save a CSS background image</a></li>
+<li><a href="image-downloader-permissions.html">Why image downloaders ask to read your data on all websites</a></li>
+</ul>
+
+</main>
+
+<footer class="sitefoot">
+  <div class="bar">
+    <nav class="footlinks">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="refund.html">Refund Policy</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <p class="seller">Sold by Apoorv Verma, Jaipur, Rajasthan, India. Email: <a href="mailto:ryan.apoorv123@gmail.com">ryan.apoorv123@gmail.com</a>. Payments are processed by Dodo Payments, our authorised reseller and Merchant of Record.</p>
+    <p class="copy">&copy; 2026 Apoorv Verma. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
